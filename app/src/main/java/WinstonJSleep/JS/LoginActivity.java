@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(move);
             }
         });
-        register.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent move = new Intent(LoginActivity.this, MainActivity.class);

@@ -1,0 +1,7 @@
+package WinstonJSleep.JS.model;
+
+public enum Facility
+{
+    WiFi, Bathtub, Balcony, AC, FitnessCenter, Refrigerator, Restaurant, SwimmingPool
+}
+
