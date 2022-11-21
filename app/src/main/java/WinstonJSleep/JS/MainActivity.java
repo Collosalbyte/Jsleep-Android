@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView listView = (ListView) findViewById(R.id.listviewmain);
-        List<String> nameStr = new ArrayList<String>();
+        //List<String> nameStr = new ArrayList<String>();
         Gson gson = new Gson();
         try {
 
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Room> roomList = new ArrayList<Room>();
             Room[] acc = gson.fromJson(reader, Room[].class);
             Collections.addAll(roomList, acc);
-            nameStr = extractName(roomList);
-            ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameStr);
+            //nameStr = extractName(roomList);
+            itemList itemAdapter = new itemList(this, roomList);
             listView.setAdapter(itemAdapter);
         } catch (Exception e) {
             e.printStackTrace();

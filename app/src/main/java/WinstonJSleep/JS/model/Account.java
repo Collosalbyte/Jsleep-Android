@@ -20,33 +20,18 @@ public class Account extends Serializable
     public Renter renter;
     public double balance;
 
-    final public static String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[A-Za-z]+)*\\.[A-Za-z]+$";
-
-    final public static String REGEX_PASSWORD = "^(?=.*a-z)(?=.*A-Z)(?=.*0-9)[a-zA-Z0-9]{8,}$";
-
-    public Account (String name, String email, String password)
-    {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-
+    @Override
     public String toString ()
     {
-        return("Name: " + name + " Email: " + email + " Password: " + password);
+        return"Account{" +
+                "balance=" + balance +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", renter=" + renter +
+                '}';
     }
 
-    public boolean validate(){
-        Pattern namaEmail = Pattern.compile(REGEX_EMAIL);
-        Pattern namaPassword = Pattern.compile(REGEX_PASSWORD);
 
-        if(email == null || password == null)
-            return false;
-
-        Matcher matchedEmail = namaEmail.matcher(email);
-        Matcher matchedPassword = namaPassword.matcher(password);
-
-        return (matchedEmail.matches() && matchedPassword.matches());
-    }
 }
 
