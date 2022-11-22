@@ -46,9 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Account account = requestAccount();
-                Intent move = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(move);
+                Account login = requestLogin();
+
             }
         });
     }
@@ -71,4 +70,28 @@ public class LoginActivity extends AppCompatActivity {
         });
         return null;
     }
+
+    protected Account requestLogin(){
+        String stringEmail = username.getText().toString();
+        String stringPassword = password.getText().toString();
+        System.out.println(username.getText().toString() + password.getText().toString());
+        mApiService.login(stringEmail, stringPassword).enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(mContext, "sukses pass/email", Toast.LENGTH_SHORT).show();
+
+                    Intent move = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(move);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                Toast.makeText(mContext, "Wrong pass/email", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+
 }
