@@ -1,5 +1,7 @@
 package WinstonJSleep.JS;
 
+import static WinstonJSleep.JS.MainActivity.aboutMePage;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.accounts.AccountAuthenticatorResponse;
@@ -80,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Account> call, Response<Account> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(mContext, "sukses pass/email", Toast.LENGTH_SHORT).show();
-
+                    aboutMePage = response.body();
                     Intent move = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(move);
                 }

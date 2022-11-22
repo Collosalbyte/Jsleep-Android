@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import com.google.gson.Gson;
 
+import WinstonJSleep.JS.model.Account;
 import WinstonJSleep.JS.model.Room;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return ret;
     }
+
+    public static Account aboutMePage;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
