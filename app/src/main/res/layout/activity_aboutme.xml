@@ -91,7 +91,7 @@
         android:layout_marginBottom="45dp"
         android:text="Balance"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumberPassword"
+        app:layout_constraintBottom_toTopOf="@+id/EditTextAmount"
         app:layout_constraintEnd_toStartOf="@+id/Balance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -106,28 +106,30 @@
         android:layout_marginBottom="40dp"
         android:text="0.0"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/topUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/aboutMeEmail" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/EditTextAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
+        android:layout_marginTop="-5dp"
         android:layout_marginEnd="21dp"
-        android:layout_marginBottom="375dp"
+        android:layout_marginBottom="380dp"
         android:ems="10"
         android:hint="Amount"
         android:inputType="numberPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/topUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/topUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -137,8 +139,150 @@
         android:text="Top Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberPassword"
+        app:layout_constraintStart_toEndOf="@+id/EditTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/Balance" />
+
+    <Button
+        android:id="@+id/RegisterRenter"
+        android:layout_width="356dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="313dp"
+        android:text="Register Renter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditTextAmount" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/AboutMeRegister"
+        android:layout_width="417dp"
+        android:layout_height="458dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterRenter">
+
+        <EditText
+            android:id="@+id/RegisterName"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="30sp"
+            android:hint="Name"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/RegisterAddress"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="120sp"
+            android:hint="Address"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/RegisterPhoneNumber"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="210sp"
+            android:hint="Phone Number"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/RegisterButton"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60sp"
+            android:layout_marginTop="280sp"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/RegisterCancel"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220sp"
+            android:layout_marginTop="280sp"
+            android:text="Cancel" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/AboutMeDetails"
+        android:layout_width="417dp"
+        android:layout_height="458dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterRenter">
+
+        <TextView
+            android:id="@+id/AboutMeTempName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="40sp"
+            android:text="Name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/AboutMeRName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="40sp"
+            android:text="Winston"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/AboutMeTempAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="120sp"
+            android:text="Address"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/AboutMeRAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="120sp"
+            android:text="Simprug"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/AboutMeTempPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="200sp"
+            android:text="Phone Number"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/AboutMeRPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="200sp"
+            android:text="081717112001"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
 
 
 

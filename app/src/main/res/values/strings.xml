@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">jsleep-android</string>
+
+    <string-array name="City">
+        <item>Jakarta</item>
+        <item>Bandung</item>
+        <item>Surabaya</item>
+        <item>Bali</item>
+        <item>NTT</item>
+    </string-array>
 </resources>
