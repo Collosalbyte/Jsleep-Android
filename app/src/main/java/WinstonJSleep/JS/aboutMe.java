@@ -79,7 +79,8 @@ public class aboutMe extends AppCompatActivity {
             public void onClick(View view) {
                 aboutMeReg.setVisibility(View.VISIBLE);
                 aboutMeDet.setVisibility(View.INVISIBLE);
-                regBut.setVisibility(View.INVISIBLE);
+                regBut.setVisibility(View.VISIBLE);
+                regRen.setVisibility(View.INVISIBLE);
             }
         });
         regCan.setOnClickListener(new View.OnClickListener() {
