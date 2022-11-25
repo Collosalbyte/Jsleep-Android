@@ -2,13 +2,16 @@ package WinstonJSleep.JS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,8 +24,16 @@ import com.google.gson.Gson;
 
 import WinstonJSleep.JS.model.Account;
 import WinstonJSleep.JS.model.Room;
+import WinstonJSleep.JS.request.BaseApiService;
+import WinstonJSleep.JS.request.UtilsApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    Context mContext;
+    BaseApiService mApiService = UtilsApi.getApiService();
 
     public static ArrayList<String> extractName(ArrayList<Room> list) {
         Gson gson = new Gson();
@@ -55,9 +66,28 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
+
+
+    protected List<Room> getRoomList (int page, int pageSize){
+        mApiService.getAllRoom(page, pageSize).enqueue(new Callback<List<Room>>() {
+            @Override
+            public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
+                if (response.isSuccessful()) {
+                    List<Room> temp = response.body();
+                    System.out.println("Response: " + temp.get(0).toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Room>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(mContext, "get room failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

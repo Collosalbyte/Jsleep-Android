@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText username,password;
     Context mContext;
 
+    public static Account accounts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,5 +97,4 @@ public class LoginActivity extends AppCompatActivity {
         });
         return null;
     }
-
 }

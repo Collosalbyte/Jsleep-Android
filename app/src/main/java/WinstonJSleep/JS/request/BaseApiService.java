@@ -1,6 +1,12 @@
 package WinstonJSleep.JS.request;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import WinstonJSleep.JS.model.Account;
+import WinstonJSleep.JS.model.BedType;
+import WinstonJSleep.JS.model.City;
+import WinstonJSleep.JS.model.Facility;
 import WinstonJSleep.JS.model.Price;
 import WinstonJSleep.JS.model.Renter;
 import WinstonJSleep.JS.model.Room;
@@ -26,6 +32,21 @@ public interface BaseApiService {
     Call<Renter> registerMe (@Query("username") String username,
                            @Query("address") String address,
                            @Query("phoneNumber") String phoneNumber);
+
+    @GET("room/getAllRoom")
+    Call<List<Room>> getAllRoom (@Query("page") int page,
+                                @Query("pageSize") int pageSize);
+
+    @POST("room/create")
+    Call<Room> createRoom (@Query("accountId") int accountId,
+                      @Query("name") String name,
+                      @Query("size") int size,
+                      @Query("price") int price,
+                      @Query("facility") ArrayList<Facility> facility,
+                      @Query("city") City city,
+                      @Query("bedType") BedType bedType,
+                      @Query("address") String address);
+
     @GET("room/{id}")
     Call<Room> getRoom (@Path("id") int id);
 
