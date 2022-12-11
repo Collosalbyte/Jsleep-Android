@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateRoomActivity">
+    tools:context=".CreateRoomActivity"
+    android:background="@color/grey">
 
     <EditText
         android:id="@+id/RoomAddress"
@@ -49,6 +50,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/RoomName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,13 +78,13 @@
         android:layout_marginBottom="19dp"
         android:text="City"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/bedTypeTitle"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/bedTypeDetailTitle"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxPool" />
 
     <TextView
-        android:id="@+id/bedTypeTitle"
+        android:id="@+id/bedTypeDetailTitle"
         android:layout_width="132dp"
         android:layout_height="27dp"
         android:layout_marginStart="42dp"
@@ -91,7 +93,7 @@
         android:text="Bed Type"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBedType"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityTitle" />
 
@@ -162,7 +164,7 @@
         android:layout_marginBottom="20dp"
         android:text="Fitness Center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/checkBoxPool"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxRestaurant" />
@@ -235,25 +237,53 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBoxRefrigator" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerCity"
         android:layout_width="167dp"
         android:layout_height="27dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerBedType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cityTitle"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxFitness" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerBedType"
         android:layout_width="167dp"
         android:layout_height="27dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="77dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bedTypeTitle"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toEndOf="@+id/bedTypeDetailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
+
+    <Button
+        android:id="@+id/roomCreate"
+        android:layout_width="124dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="10dp"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancelCreate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bedTypeDetailTitle" />
+
+    <Button
+        android:id="@+id/cancelCreate"
+        android:layout_width="124dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="10dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/roomCreate"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBedType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

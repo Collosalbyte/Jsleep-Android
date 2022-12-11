@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
-    android:backgroundTint="#FFFFFF"
+    android:background="@color/grey"
     tools:context=".RegisterActivity">
+
 
   <EditText
       android:id="@+id/NameReg"
@@ -38,7 +38,8 @@
       app:layout_constraintBottom_toTopOf="@+id/PasswordReg"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/NameReg" />
+      app:layout_constraintTop_toBottomOf="@+id/NameReg"
+      android:autofillHints="" />
 
   <EditText
       android:id="@+id/PasswordReg"
@@ -51,6 +52,7 @@
       android:hint="Password"
       android:inputType="textEmailAddress"
       android:minHeight="48dp"
+      android:textColorHint="#757575"
       app:layout_constraintBottom_toTopOf="@+id/Registerbutton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +69,7 @@
       android:backgroundTint="#3FEDE8"
       android:shadowColor="#673AB7"
       android:text="REGISTER"
+      android:textColor="#795548"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"

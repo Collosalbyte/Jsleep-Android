@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +30,8 @@ public class aboutMe extends AppCompatActivity {
     EditText regName, regAddress, regPhone;
     Context mContext;
     CardView aboutMeReg, aboutMeDet;
-    Button regRen, regBut, regCan;
+    Button regRen, regBut, regCan, regTop;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class aboutMe extends AppCompatActivity {
         regRen = (Button) findViewById(R.id.RegisterRenter);
         regCan = (Button) findViewById(R.id.RegisterCancel);
         regBut = (Button) findViewById(R.id.RegisterButton);
+        regTop = (Button) findViewById(R.id.topUpButton);
 
         regName = findViewById(R.id.RegisterName);
         regAddress = findViewById(R.id.RegisterAddress);
@@ -61,8 +67,9 @@ public class aboutMe extends AppCompatActivity {
         }
 
         if (aboutMePage.renter != null) {
-            aboutMeReg.setVisibility(View.VISIBLE);
-            aboutMeDet.setVisibility(View.INVISIBLE);
+            regRen.setVisibility(View.INVISIBLE);
+            aboutMeReg.setVisibility(View.INVISIBLE);
+            aboutMeDet.setVisibility(View.VISIBLE);
             regBut.setVisibility(View.INVISIBLE);
 
             TextView regName = findViewById(R.id.AboutMeRName);
@@ -92,19 +99,18 @@ public class aboutMe extends AppCompatActivity {
             }
         });
 
-        regBut.setOnClickListener(new View.OnClickListener() {
+        regTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                aboutMeReg.setVisibility(View.INVISIBLE);
-                aboutMeDet.setVisibility(View.VISIBLE);
-                regBut.setVisibility(View.INVISIBLE);
+                EditText moneyAmount = findViewById(R.id.EditTextAmount);
+                topUp(Double.parseDouble(moneyAmount.getText().toString()));
             }
         });
-    }
 
+    }
     protected Account requestRenter() {
 
-        mApiService.registerMe(regName.getText().toString(),
+        mApiService.registerMe(aboutMePage.id, regName.getText().toString(),
                 regAddress.getText().toString(),
                 regPhone.getText().toString()).enqueue(new Callback<Renter>() {
             @Override
@@ -121,5 +127,41 @@ public class aboutMe extends AppCompatActivity {
             }
         });
         return null;
+    }
+    protected Boolean topUp (double Balance) {
+
+        mApiService.topUp(aboutMePage.id, Balance).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(mContext, "Top Up Successful!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Toast.makeText(mContext, "Top Up Failed!", Toast.LENGTH_LONG).show();
+            }
+        });
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ic_baseline_add_box_24:
+                startActivity(new Intent(this, CreateRoomActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.registerenu, menu);
+        return true;
     }
 }

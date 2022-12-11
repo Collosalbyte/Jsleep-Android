@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/grey">
 
     <TextView
         android:id="@+id/JSLEEP"
@@ -13,6 +14,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="-10dp"
         android:text="JSLEEP"
+        android:textColor="#CBDF16"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBottomOf="parent"
@@ -46,6 +48,9 @@
         android:hint="Username"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:shadowColor="#2196F3"
+        android:textColor="#050505"
+        android:textColorHighlight="#CBDF16"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

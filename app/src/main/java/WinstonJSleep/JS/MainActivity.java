@@ -2,14 +2,18 @@ package WinstonJSleep.JS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
     Context mContext;
     BaseApiService mApiService = UtilsApi.getApiService();
+    ListView listView;
+    int page = 0;
+    int pageSize = 3;
+    public static int currentPosition;
+    public static ArrayList<Room> rooms = new ArrayList<Room>();
 
     public static ArrayList<String> extractName(ArrayList<Room> list) {
         Gson gson = new Gson();
@@ -50,41 +59,66 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView listView = (ListView) findViewById(R.id.listviewmain);
-        //List<String> nameStr = new ArrayList<String>();
-        Gson gson = new Gson();
-        try {
+        mApiService = UtilsApi.getApiService();
+        mContext = this;
+        Button nextPage = findViewById(R.id.Next);
+        Button prevPage = findViewById(R.id.Prev);
+        Button goPage = findViewById(R.id.Go);
+        EditText pageNum = findViewById(R.id.PageNum);
+        getRoomList(pageSize, page);
+        listView = (ListView) findViewById(R.id.listviewmain);
 
-            InputStream filepath = getAssets().open("randomRoomList.json");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(filepath));
-            ArrayList<Room> roomList = new ArrayList<Room>();
-            Room[] acc = gson.fromJson(reader, Room[].class);
-            Collections.addAll(roomList, acc);
-            //nameStr = extractName(roomList);
-            itemList itemAdapter = new itemList(this, roomList);
-            listView.setAdapter(itemAdapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    protected List<Room> getRoomList (int page, int pageSize){
-        mApiService.getAllRoom(page, pageSize).enqueue(new Callback<List<Room>>() {
+        nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
-                if (response.isSuccessful()) {
-                    List<Room> temp = response.body();
-                    System.out.println("Response: " + temp.get(0).toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Room>> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(mContext, "get room failed", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                pageSize++;
+                getRoomList(pageSize, page);
+                pageNum.setText(Integer.toString(pageSize));
             }
         });
+
+        prevPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pageSize > 0){
+                    pageSize--;
+                }
+                getRoomList(pageSize, page);
+                pageNum.setText(Integer.toString(pageSize));
+            }
+        });
+        goPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageSize = Integer.parseInt(pageNum.getText().toString());
+                getRoomList(pageSize, page);
+            }
+        });
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            currentPosition = position;
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    protected ArrayList<Room> getRoomList (int pageSize, int page){
+
+        mApiService.getAllRoom(page, pageSize).enqueue(new Callback<List<Room>>() {
+                @Override
+                public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
+                    rooms.clear();
+                    rooms.addAll(response.body());
+                    listView = (ListView) findViewById(R.id.listviewmain);
+                    itemList itemAdapter = new itemList(mContext, rooms);
+                    listView.setAdapter(itemAdapter);
+
+                }
+
+                @Override
+                public void onFailure(Call<List<Room>> call, Throwable t) {
+                    Toast.makeText(mContext, "Failed to load the room", Toast.LENGTH_SHORT).show();
+                }
+            });
         return null;
     }
 
@@ -96,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -104,11 +139,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.ic_baseline_person_24:
                 startActivity(new Intent(this, aboutMe.class));
                 return true;
-            case R.id.ic_baseline_add_box_24:
-                startActivity(new Intent(this, RegisterActivity.class));
+            case R.id.payList:
+                startActivity(new Intent(MainActivity.this, PaymentListActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public static Room getSelectedRoom () {
+        return rooms.get(currentPosition);
     }
 }

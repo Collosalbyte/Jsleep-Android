@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".aboutMe">
+    tools:context=".aboutMe"
+    android:background="@color/grey">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="231dp"
         android:layout_height="47dp"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="122dp"
-        android:layout_marginBottom="9dp"
         android:text="Account Details"
+        android:textColor="#6E1B1B"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,15 +26,15 @@
         android:id="@+id/aboutMeEmail"
         android:layout_width="170dp"
         android:layout_height="22dp"
-        android:layout_marginStart="-8dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginBottom="50dp"
         android:text="perfecttjahaja@gmail.com"
+        android:textColor="#000000"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Balance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/sizeDetailTitle"
         app:layout_constraintTop_toBottomOf="@+id/aboutMeName" />
 
     <TextView
@@ -41,74 +42,80 @@
         android:layout_width="71dp"
         android:layout_height="28dp"
         android:layout_marginStart="-5dp"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="50dp"
         android:text="Winston"
+        android:textColor="#000000"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/aboutMeEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/sizeDetailTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/sizeDetailTitle"
         android:layout_width="59dp"
         android:layout_height="26dp"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="195dp"
         android:layout_marginBottom="31dp"
         android:text="Name"
+        android:textColor="#0C0C0C"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/priceDetailTitle"
         app:layout_constraintEnd_toStartOf="@+id/aboutMeName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/priceDetailTitle"
         android:layout_width="59dp"
         android:layout_height="26dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="-10dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="150dp"
         android:layout_marginBottom="30dp"
         android:text="Email"
+        android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/addressDetailTitle"
         app:layout_constraintEnd_toStartOf="@+id/aboutMeEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/sizeDetailTitle" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/addressDetailTitle"
         android:layout_width="59dp"
         android:layout_height="26dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="-10dp"
-        android:layout_marginEnd="230dp"
         android:layout_marginBottom="45dp"
         android:text="Balance"
+        android:textColor="#000000"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/EditTextAmount"
-        app:layout_constraintEnd_toStartOf="@+id/Balance"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/priceDetailTitle" />
 
     <TextView
         android:id="@+id/Balance"
-        android:layout_width="36dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="-10dp"
+        android:layout_width="93dp"
+        android:layout_height="29dp"
         android:layout_marginTop="-20dp"
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="40dp"
         android:text="0.0"
+        android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/topUp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/topUpButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/aboutMeEmail" />
 
     <EditText
@@ -118,18 +125,18 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="-5dp"
         android:layout_marginEnd="21dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginBottom="350dp"
         android:ems="10"
         android:hint="Amount"
         android:inputType="numberPassword"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/topUp"
+        app:layout_constraintEnd_toStartOf="@+id/topUpButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/addressDetailTitle" />
 
     <Button
-        android:id="@+id/topUp"
+        android:id="@+id/topUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -158,12 +165,16 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/AboutMeRegister"
-        android:layout_width="417dp"
-        android:layout_height="458dp"
+        android:layout_width="396dp"
+        android:layout_height="510dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
+        android:background="@color/grey"
+        app:cardBackgroundColor="@color/grey"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -212,76 +223,76 @@
             android:layout_marginTop="280sp"
             android:text="Cancel" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/AboutMeDetails"
-            android:layout_width="417dp"
-            android:layout_height="458dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/AboutMeTempName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35sp"
-                android:layout_marginTop="40sp"
-                android:text="Name"
-                android:textSize="16sp" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/AboutMeDetails"
+        android:layout_width="418dp"
+        android:layout_height="363dp"
+        android:layout_marginStart="1dp"
+        android:background="@color/grey"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/grey"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterRenter">
 
-            <TextView
-                android:id="@+id/AboutMeRName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="280sp"
-                android:layout_marginTop="40sp"
-                android:text="Winston"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/AboutMeTempName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="40sp"
+            android:text="Name"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/AboutMeTempAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35sp"
-                android:layout_marginTop="120sp"
-                android:text="Address"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/AboutMeRName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="40sp"
+            android:text="Winston"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/AboutMeRAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="280sp"
-                android:layout_marginTop="120sp"
-                android:text="Simprug"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/AboutMeTempAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="120sp"
+            android:text="Address"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/AboutMeTempPhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35sp"
-                android:layout_marginTop="200sp"
-                android:text="Phone Number"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/AboutMeRAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="120sp"
+            android:text="Simprug"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/AboutMeRPhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="280sp"
-                android:layout_marginTop="200sp"
-                android:text="081717112001"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/AboutMeTempPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35sp"
+            android:layout_marginTop="200sp"
+            android:text="Phone Number"
+            android:textSize="16sp" />
 
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/AboutMeRPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280sp"
+            android:layout_marginTop="200sp"
+            android:text="081717112001"
+            android:textSize="16sp" />
 
     </androidx.cardview.widget.CardView>
 
